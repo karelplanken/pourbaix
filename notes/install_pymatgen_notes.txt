@@ -1,0 +1,12 @@
+To install pymatgen:
+pip install pymatgen
+
+Sign up at: https://next-gen.materialsproject.org
+and get an API Key
+
+Then pip install:
+mp-api
+mpcontribs-client
+
+And to get rid of the error "No module named 'phonopy'" do:
+pip install phonopy
