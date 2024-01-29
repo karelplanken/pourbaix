@@ -4,7 +4,7 @@ Welcome to the Pourbaix Diagram Generator (PDG), a [Python](https://www.python.o
 Open-Source Python Library for Materials Analysis. Computational Materials
 Science, 2013, 68, 314–319.](https://doi.org/10.1016/j.commatsci.2012.10.028)) package to create Pourbaix diagrams for elements of your choice. This project serves as my initial exploration into pymatgen, making it perfect for those taking their first steps with the package.
 
-The PDG is used in the water electrolysis and electroreduction of carbondioxide projects, conducted by the Solar Fuels SF/E4F group (lector: Peter Thüne) at the Fontys University of Applied Science - Applied Natural Science Lectorate ([SIA grant for RAAK/PRO - ALMA](https://regieorgaan-sia.nl/praktijkgericht-onderzoek/uitgelichte-projecten/pionieren-als-lint-lector/) and [RELEASE](https://smartport.nl/project/release-reversible-large-scale-energy-storage/)).
+The PDG is used in the water electrolysis (PEM/LAWE/AEM) and carbondioxide electroreduction (CO2ER) projects, conducted by the Solar Fuels SF/E4F group (lector: Peter Thüne) at the Fontys University of Applied Science - Applied Natural Science Lectorate ([SIA grant for RAAK/PRO - ALMA](https://regieorgaan-sia.nl/praktijkgericht-onderzoek/uitgelichte-projecten/pionieren-als-lint-lector/) and [RELEASE](https://smartport.nl/project/release-reversible-large-scale-energy-storage/)).
 
 ## Getting Started
 
