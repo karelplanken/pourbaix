@@ -33,14 +33,14 @@ Explore the docstrings in main.py for detailed information on available function
 
 ## Sample Pourbaix Diagrams
 
-Check out the 📁 *diagrams* directory for pre-generated Pourbaix diagrams. Below is an example:
+Check out the 📁*pourbaix_diagrams* directory for pre-generated Pourbaix diagrams. Below is an example:
 
-![Pourbaix diagram for Nickel](/diagrams/Ni.png)
+![Pourbaix diagram for Nickel](/pourbaix_diagrams/Ni.png)
 Figure: Pourbaix diagram for Nickel
 
 ## Pourbaix Entries
 
-The pourbaix_entries folder contains Pourbaix entries for various elements saved as JSON files. Feel free to modify or add your own entries.
+The 📁pourbaix_entries directory contains Pourbaix entries for various elements saved as JSON files. Feel free to add your own entries.
 
 ## Contributing
 

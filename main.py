@@ -20,19 +20,24 @@ from pymatgen.analysis.pourbaix_diagram import (  # type: ignore
 from mp_api.client import MPRester  # type: ignore
 
 # Paths to save and retrieve
-JSON_ENTRIES_DIR: str = 'json_entries'
-DIAGRAMS_DIR: str = 'diagrams'
+JSON_ENTRIES_DIR: str = 'pourbaix_entries'
+DIAGRAMS_DIR: str = 'pourbaix_diagrams'
 
 
 def main() -> int:
     """Orchestrates the creation of a Pourbaix diagram for element(s)
     that are contained in the compounds list. Adjust the compounds list
     to your needs using the abbreviation for elements as listed in the 
-    periodic table of the elements.
+    periodic table of the elements:
+    compounds: list[str] = ['Fe']
 
     :return: exit status
     """
-    compounds: list[str] = ['Fe', 'Ni']
+    compounds: list[str] = []
+
+    if len(compounds) == 0:
+        print('Add at least one element to the compounds list!')
+        return 1
 
     # Save the retrieved entries if not already on disk, might
     # helpful for next time to not bother the MP API with requests
@@ -135,8 +140,8 @@ def get_stored_pourbaix_entries(compound: str) -> list[PourbaixEntry]:
 def plot_pourbaix_diagram(
         compounds: list[str],
         entries: list[PourbaixEntry],
-        comp_dict: dict[str: float],
-        conc_dct: dict[str: float]
+        comp_dict: dict[str, float],
+        conc_dct: dict[str, float]
 ) -> None:
     """Creates, saves and shows a Pourbaix diagram for element(s).
 
