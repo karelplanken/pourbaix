@@ -1,0 +1,12 @@
+# Changes here will be overwritten by Copier
+_src_path: /home/karel/python-projects/python-project-templates/app
+author_name: Karel Planken
+gitleaks_version: 8.30.1
+license_year: '2026'
+project_description: Generate Pourbaix diagrams with pymatgen and the Materials Project
+    API.
+project_keywords: pourbaix, pymatgen, materials-project, electrochemistry
+project_name: Pourbaix Diagram Generator
+project_slug: pourbaix
+python_version: '3.14'
+

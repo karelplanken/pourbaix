@@ -1,0 +1,78 @@
+default_install_hook_types = ["pre-commit", "commit-msg", "pre-push"]
+
+# Generic file hygiene --------------------------------------------------------
+[[repos]]
+repo = "https://github.com/pre-commit/pre-commit-hooks"
+rev = "v6.0.0"
+hooks = [
+  { id = "no-commit-to-branch" },
+  { id = "trailing-whitespace" },
+  { id = "end-of-file-fixer" },
+  { id = "mixed-line-ending", args = ["--fix=lf"] },
+  { id = "check-merge-conflict" },
+  { id = "check-added-large-files" },
+  { id = "check-toml" },
+  { id = "check-yaml" },
+  { id = "pretty-format-json", args = ["--autofix", "--indent=4", "--no-ensure-ascii"] },
+]
+
+# Commit message / branch conventions -----------------------------------------
+[[repos]]
+repo = "https://github.com/commitizen-tools/commitizen"
+rev = "v4.13.10"
+hooks = [
+  { id = "commitizen", stages = ["commit-msg"] },
+  { id = "commitizen-branch", stages = ["pre-push"] },
+]
+
+# Secret scanning — rev kept in sync with the install snippet in README.md
+[[repos]]
+repo = "https://github.com/gitleaks/gitleaks"
+rev = "v8.30.1"
+hooks = [{ id = "gitleaks" }]
+
+# Local project hooks (delegated to justfile) ---------------------------------
+[[repos]]
+repo = "local"
+
+# Format: ruff isort fixes + ruff format
+[[repos.hooks]]
+id = "ruff-format"
+name = "ruff-format"
+entry = "just format"
+language = "system"
+types = ["python"]
+
+# Static type checking via mypy
+[[repos.hooks]]
+id = "check-types"
+name = "check-types"
+entry = "just check-types"
+language = "system"
+types = ["python"]
+
+# Cyclomatic complexity via complexipy
+[[repos.hooks]]
+id = "check-complexity"
+name = "check-complexity"
+entry = "just check-complexity"
+language = "system"
+types = ["python"]
+
+# Spell checking — a venv dependency like the tools above, so it's a single
+# pin (pyproject.toml) rather than a second one to keep in sync here.
+[[repos.hooks]]
+id = "check-spelling"
+name = "check-spelling"
+entry = "just check-spelling"
+language = "system"
+
+# Catches drift between this file's gitleaks pin and what's actually
+# installed (gitleaks isn't a venv dependency, so this is its only check).
+[[repos.hooks]]
+id = "check-versions-sync"
+name = "check-versions-sync"
+entry = "just check-versions-sync"
+language = "system"
+always_run = true
+pass_filenames = false
