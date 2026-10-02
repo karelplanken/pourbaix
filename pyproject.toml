@@ -7,7 +7,12 @@ requires-python = ">=3.14"
 readme = "README.md"
 authors = [{ name = "Karel Planken" }]
 keywords = ["pourbaix", "pymatgen", "materials-project", "electrochemistry"]
-dependencies = []
+dependencies = [
+    "matplotlib>=3.11.2",
+    "mp-api>=0.46.5",
+    "pymatgen>=2026.9.24",
+    "python-dotenv>=1.2.4",
+]
 
 [project.scripts]
 pourbaix = "pourbaix.__main__:main"
