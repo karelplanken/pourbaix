@@ -42,7 +42,7 @@ Requires [uv](https://docs.astral.sh/uv/) and [just](https://just.systems/).
    it in a `.env` file in the repository root (`.env` is git-ignored):
 
    ```bash
-   MP_API_KEY_KAREL=<your-api-key>
+   MP_API_KEY=<your-api-key>
    ```
 
 3. Enter the element(s) of your choice in `main()` in `src/pourbaix/__main__.py`:

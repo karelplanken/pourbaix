@@ -1,23 +1,32 @@
-"""Pourbaix Diagram Generator
+"""Pourbaix Diagram Generator.
 
-This script allows the user to generate a Pourbaix diagram for a single 
+This script allows the user to generate a Pourbaix diagram for a single
 or multi element system in water.
 
 Adjust the list of elements defined in main() to your needs.
 
-A requirements.txt file can be found in the GitHub repo.
+Entry point for Pourbaix Diagram Generator.
+
+Toolkit-agnostic stub — see README.md for how to wire up a CLI (Typer
+recommended) or a GUI (tkinter, pygame, etc.) here. Whatever you pick,
+`[project.scripts]` in pyproject.toml already points at `main` below.
 """
+
 import glob
-import sys
-import os
-from dotenv import load_dotenv
 import json
+import os
+import sys
+
 import matplotlib.pyplot as plt
+from dotenv import load_dotenv
+from mp_api.client import MPRester
+
 # Import necessary tools from pymatgen
-from pymatgen.analysis.pourbaix_diagram import (  # type: ignore
-    PourbaixDiagram, PourbaixPlotter, PourbaixEntry
+from pymatgen.analysis.pourbaix_diagram import (
+    PourbaixDiagram,
+    PourbaixEntry,
+    PourbaixPlotter,
 )
-from mp_api.client import MPRester  # type: ignore
 
 # Paths to save and retrieve
 JSON_ENTRIES_DIR: str = 'pourbaix_entries'
@@ -25,15 +34,17 @@ DIAGRAMS_DIR: str = 'pourbaix_diagrams'
 
 
 def main() -> int:
-    """Orchestrates the creation of a Pourbaix diagram for element(s)
-    that are contained in the compounds list. Adjust the compounds list
-    to your needs using the abbreviation for elements as listed in the 
-    periodic table of the elements:
-    compounds: list[str] = ['Fe']
+    """Main function to generate a Pourbaix diagram.
 
-    :return: exit status
+    This function orchestrates the creation of a Pourbaix diagram for element(s)
+    that are contained in the compounds list. Adjust the compounds list
+    to your needs using the abbreviation for elements as listed in the
+    periodic table of the elements.
+
+    Returns:
+        Exit code (0 for success, 1 for failure)
     """
-    compounds: list[str] = []
+    compounds: list[str] = ['Fe']
 
     if len(compounds) == 0:
         print('Add at least one element to the compounds list!')
@@ -44,7 +55,7 @@ def main() -> int:
     compounds_entries_to_disk(compounds)
 
     # Now that all entries are on disk, load them
-    all_entries = list()
+    all_entries: list[PourbaixEntry] = list()
     for compound in compounds:
         all_entries.extend(get_stored_pourbaix_entries(compound))
 
@@ -64,13 +75,13 @@ def main() -> int:
 
 
 def compounds_entries_to_disk(compounds: list[str]) -> None:
-    """Given a list of elements, requests the Pourbaix entries from the 
-    Materials Project API via retrieve_pourbaix_entries() if not already
-    on disk. Entries that are not on disk are saved to disk by calling 
-    save_pourbaix_entries().
-    Returns nothing.
+    """Retrieves Pourbaix entries for the given compounds and saves them to disk.
 
-    :param compounds: List of elements to retrieve
+    If the entries are not already on disk, they are retrieved from the Materials
+    Project API and saved to disk.
+
+    Args:
+        compounds: Elements for which to retrieve Pourbaix entries
     """
     for compound in compounds:
         if len(glob.glob(f'{JSON_ENTRIES_DIR}/{compound}.json')) > 0:
@@ -81,16 +92,18 @@ def compounds_entries_to_disk(compounds: list[str]) -> None:
 
 
 def retrieve_pourbaix_entries(compound: str) -> list[PourbaixEntry]:
-    """Retrieves by requesting Pourbaix entries for an element from the 
-    Materials Project API.
+    """Retrieves Pourbaix entries for a given compound from the Materials Project API.
 
-    :param compound: Element to retrieve Pourbaix entries for
-    :return: List of Pourbaix entry objects
+    Args:
+        compound: Element for which to retrieve Pourbaix entries
+
+    Returns:
+        List of Pourbaix entry objects
     """
-    # Materials project needs API key, obtain one yourself at 
+    # Materials project needs API key, obtain one yourself at
     # https://next-gen.materialsproject.org/api
     load_dotenv(override=True)
-    api_key = os.getenv('MP_API_KEY_KAREL')
+    api_key = os.getenv('MP_API_KEY')
 
     # Initialize the MP Rester
     mpr = MPRester(api_key)
@@ -102,53 +115,53 @@ def retrieve_pourbaix_entries(compound: str) -> list[PourbaixEntry]:
 
 
 def save_pourbaix_entries(compound: str, entries: list[PourbaixEntry]) -> None:
-    """Saves the Pourbaix entries for an element as a JSON file in the 
-    directory defined in JSON_ENTRIES_DIR.
-    Returns nothing.
+    """Saves Pourbaix entries for a given compound to disk as JSON.
 
-    :param compound: Element for which entries have to be saved
-    :param entries: List of Pourbaix entry objects
+    Args:
+        compound: Element for which to save Pourbaix entries
+        entries: List of Pourbaix entry objects to save
     """
     # Serialize list of Pourbaix entries to save as JSON
-    entries_dct = [entry.as_dict() for entry in entries]
+    entries_dct: list[dict[str, object]] = [entry.as_dict() for entry in entries]
 
     # Save list of Pourbaix entries to disk
-    with open(
-        f'{JSON_ENTRIES_DIR}/{compound}.json', 'w', encoding='utf-8'
-    ) as out_file:
+    with open(f'{JSON_ENTRIES_DIR}/{compound}.json', 'w', encoding='utf-8') as out_file:
         out_file.write(json.dumps(entries_dct))
 
 
 def get_stored_pourbaix_entries(compound: str) -> list[PourbaixEntry]:
-    """Loads JSON files containing Pourbaix entries for en element.
+    """Retrieves stored Pourbaix entries for a given compound from disk.
 
-    :param compound: Element to load Pourbaix entries for
-    :return: List of Pourbaix entry objects
+    Args:
+        compound: Element for which to retrieve stored Pourbaix entries
+
+    Returns:
+        List of Pourbaix entry objects
     """
     # Retrieve list of Pourbaix entries from JSON file on disk
-    with open(
-        f'{JSON_ENTRIES_DIR}/{compound}.json', 'r', encoding='utf-8'
-    ) as in_file:
+    with open(f'{JSON_ENTRIES_DIR}/{compound}.json', encoding='utf-8') as in_file:
         entries_dct = json.loads(in_file.read())
 
     # Populate list with PourbaixEntry objects from dictionaries
-    entries = [PourbaixEntry.from_dict(entry_dct) for entry_dct in entries_dct]
+    for entry_dct in entries_dct:
+        entries = [PourbaixEntry.from_dict(entry_dct) for entry_dct in entries_dct]
 
     return entries
 
 
 def plot_pourbaix_diagram(
-        compounds: list[str],
-        entries: list[PourbaixEntry],
-        comp_dict: dict[str, float],
-        conc_dct: dict[str, float]
+    compounds: list[str],
+    entries: list[PourbaixEntry],
+    comp_dict: dict[str, float],
+    conc_dct: dict[str, float],
 ) -> None:
-    """Creates, saves and shows a Pourbaix diagram for element(s).
+    """Plots a Pourbaix diagram for the given compounds and entries.
 
-    :param compounds: List of elements
-    :param entries: List of Pourbaix entry objects for element(s)
-    :param comp_dict: Relative system composition of elements
-    :param conc_dct: Concentration of ions
+    Args:
+        compounds: List of elements for which to plot the Pourbaix diagram
+        entries: List of Pourbaix entry objects to use for plotting
+        comp_dict: Relative system composition of elements
+        conc_dct: Concentration of ions
     """
     # Filename to save png
     filename = ''.join(compound for compound in compounds)
@@ -171,7 +184,7 @@ def plot_pourbaix_diagram(
         label_domains=True,
         label_fontsize=fontsize,
         show_water_lines=True,
-        show_neutral_axes=True
+        show_neutral_axes=True,
     )
 
     # Set ticks and labels fontsize for axes
@@ -182,11 +195,7 @@ def plot_pourbaix_diagram(
     plt.tight_layout()
 
     # Save and display the plot using plt.show()
-    plt.savefig(
-        f'{DIAGRAMS_DIR}/{filename}.png',
-        dpi='figure',
-        format='png'
-    )
+    plt.savefig(f'{DIAGRAMS_DIR}/{filename}.png', dpi='figure', format='png')
     plt.show()
 
 
