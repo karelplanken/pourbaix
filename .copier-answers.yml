@@ -9,4 +9,3 @@ project_keywords: pourbaix, pymatgen, materials-project, electrochemistry
 project_name: Pourbaix Diagram Generator
 project_slug: pourbaix
 python_version: '3.14'
-
