@@ -16,6 +16,7 @@ import glob
 import json
 import os
 import sys
+from typing import Any
 
 import matplotlib.pyplot as plt
 from dotenv import load_dotenv
@@ -122,7 +123,7 @@ def save_pourbaix_entries(compound: str, entries: list[PourbaixEntry]) -> None:
         entries: List of Pourbaix entry objects to save
     """
     # Serialize list of Pourbaix entries to save as JSON
-    entries_dct: list[dict[str, object]] = [entry.as_dict() for entry in entries]
+    entries_dct: list[dict[str, Any]] = [entry.as_dict() for entry in entries]
 
     # Save list of Pourbaix entries to disk
     with open(f'{JSON_ENTRIES_DIR}/{compound}.json', 'w', encoding='utf-8') as out_file:
@@ -140,13 +141,10 @@ def get_stored_pourbaix_entries(compound: str) -> list[PourbaixEntry]:
     """
     # Retrieve list of Pourbaix entries from JSON file on disk
     with open(f'{JSON_ENTRIES_DIR}/{compound}.json', encoding='utf-8') as in_file:
-        entries_dct = json.loads(in_file.read())
+        entries_dct: list[dict[str, Any]] = json.loads(in_file.read())
 
     # Populate list with PourbaixEntry objects from dictionaries
-    for entry_dct in entries_dct:
-        entries = [PourbaixEntry.from_dict(entry_dct) for entry_dct in entries_dct]
-
-    return entries
+    return [PourbaixEntry.from_dict(entry_dct) for entry_dct in entries_dct]
 
 
 def plot_pourbaix_diagram(
