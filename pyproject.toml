@@ -98,12 +98,22 @@ docstring-code-line-length = "dynamic"
 # mypy (type checking) ----------------------------------------------------------------
 [tool.mypy]
 strict = true
-# Uncomment if you want file/module targeting instead of passing paths on the CLI:
-# files = ["challenges"]
 
 # Individual strict-bundle flags can be overridden below if one gets too noisy
 # for a specific area, e.g.:
 # disallow_untyped_defs = false
+
+# pymatgen leaves some methods unannotated (e.g. PourbaixEntry.as_dict).
+untyped_calls_exclude = ["pymatgen"]
+
+# pyright / Pylance (editor type checking) --------------------------------------------
+[tool.pyright]
+typeCheckingMode = "strict"
+# Third-party libraries leave parameters unannotated (matplotlib's **kwargs in
+# pyplot/Axes, pymatgen's bare `dict` in MSONable.from_dict), which strict mode
+# reports at every call site. mypy (strict) already checks our own code.
+reportUnknownMemberType = "none"
+reportMissingTypeStubs = "none"
 
 # complexipy (cognitive complexity) ---------------------------------------------------
 [tool.complexipy]
