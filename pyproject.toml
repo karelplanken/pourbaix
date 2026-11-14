@@ -72,12 +72,24 @@ target-version = "py314"
 
 [tool.ruff.lint]
 preview = true
-select = ["ANN", "C901", "D", "DOC", "E4", "E501", "E7", "E9", "EM101", "EM102", "EM103", "F", "I", "UP"]
-# D417: don't require documentation for every function parameter
-ignore = ["D417"]
+# Everything on; each exception below says why. A ruff bump (pinned in
+# uv.lock) can add rules: fix them or list them here.
+select = ["ALL"]
+ignore = [
+    "COM812",  # missing-trailing-comma: conflicts with the formatter
+    "CPY001",  # missing-copyright-notice: no header in every file
+    "D417",  # undocumented-param: not every parameter needs documenting
+    "Q",  # flake8-quotes: the formatter owns quote style
+    "RUF201",  # rule-codes-in-selectors: codes are what noqa/output use
+]
 fixable = ["ALL"]
 unfixable = []
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.lint.per-file-ignores]
+# pytest style: bare assert, literal expected values, and no __init__.py
+# (pytest imports test files by path).
+"tests/**" = ["INP001", "PLR2004", "S101"]
 
 [tool.ruff.lint.pydocstyle]
 # Also silently disables rules that conflict with "google" (e.g. D413).
