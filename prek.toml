@@ -42,7 +42,6 @@ name = "ruff-format"
 entry = "just format"
 language = "system"
 types = ["python"]
-pass_filenames = false
 
 # Static type checking via mypy
 [[repos.hooks]]
@@ -51,6 +50,7 @@ name = "check-types"
 entry = "just check-types"
 language = "system"
 types = ["python"]
+pass_filenames = false
 
 # Cyclomatic complexity via complexipy
 [[repos.hooks]]
