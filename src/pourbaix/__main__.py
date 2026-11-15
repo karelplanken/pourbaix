@@ -30,8 +30,8 @@ from pymatgen.analysis.pourbaix_diagram import (
 )
 
 # Paths to save and retrieve
-JSON_ENTRIES_DIR: str = 'pourbaix_entries'
-DIAGRAMS_DIR: str = 'pourbaix_diagrams'
+JSON_ENTRIES_DIR: str = 'pourbaix-entries'
+DIAGRAMS_DIR: str = 'pourbaix-diagrams'
 
 
 def main() -> int:

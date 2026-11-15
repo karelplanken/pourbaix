@@ -61,22 +61,22 @@ Requires [uv](https://docs.astral.sh/uv/) and [just](https://just.systems/).
    ```
 
    Entries are fetched from the Materials Project API only if they aren't already cached
-   in `pourbaix_entries/`. The diagram is shown on screen and saved as
-   `pourbaix_diagrams/<elements>.png`.
+   in `pourbaix-entries/`. The diagram is shown on screen and saved as
+   `pourbaix-diagrams/<elements>.png`.
 
 See the docstrings in `src/pourbaix/__main__.py` for details on the available functions.
 
 ## Sample Pourbaix diagrams
 
-The 📁 `pourbaix_diagrams` directory contains pre-generated Pourbaix diagrams. Below is
+The 📁 `pourbaix-diagrams` directory contains pre-generated Pourbaix diagrams. Below is
 an example:
 
-![Pourbaix diagram for Nickel](/pourbaix_diagrams/Ni.png) Figure: Pourbaix diagram for
+![Pourbaix diagram for Nickel](/pourbaix-diagrams/Ni.png) Figure: Pourbaix diagram for
 Nickel
 
 ## Pourbaix entries
 
-The 📁 `pourbaix_entries` directory contains Pourbaix entries for various elements, saved
+The 📁 `pourbaix-entries` directory contains Pourbaix entries for various elements, saved
 as JSON files. Feel free to add your own entries.
 
 ## Development
