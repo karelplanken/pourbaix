@@ -127,7 +127,9 @@ def save_pourbaix_entries(compound: str, entries: list[PourbaixEntry]) -> None:
 
     # Save list of Pourbaix entries to disk
     with open(f'{JSON_ENTRIES_DIR}/{compound}.json', 'w', encoding='utf-8') as out_file:
-        out_file.write(json.dumps(entries_dct))
+        out_file.write(
+            json.dumps(entries_dct, indent=4, sort_keys=True, ensure_ascii=False) + '\n'
+        )
 
 
 def get_stored_pourbaix_entries(compound: str) -> list[PourbaixEntry]:

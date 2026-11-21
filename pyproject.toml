@@ -29,6 +29,7 @@ dev = [
     "pytest-cov",
     "ruff",
     "mypy",
+    "pre-commit-hooks==6.0.0",
 ]
 
 # Build backend -----------------------------------------------------------------------
@@ -117,6 +118,10 @@ strict = true
 
 # pymatgen leaves some methods unannotated (e.g. PourbaixEntry.as_dict).
 untyped_calls_exclude = ["pymatgen"]
+
+[[tool.mypy.overrides]]
+module = ["pre_commit_hooks.*"]
+follow_untyped_imports = true
 
 # pyright / Pylance (editor type checking) --------------------------------------------
 [tool.pyright]

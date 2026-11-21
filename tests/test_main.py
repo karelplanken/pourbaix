@@ -1,14 +1,75 @@
 """Tests for the Pourbaix entry cache in pourbaix.__main__."""
 
+import tomllib
 from pathlib import Path
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, NotRequired, TypedDict, cast
+
+from pre_commit_hooks.pretty_format_json import main as pretty_format_json
 
 from pourbaix.__main__ import get_stored_pourbaix_entries, save_pourbaix_entries
 
 if TYPE_CHECKING:
     import pytest
 
-ENTRIES_DIR = Path(__file__).parents[1] / 'pourbaix-entries'
+PROJECT_ROOT = Path(__file__).parents[1]
+
+ENTRIES_DIR = PROJECT_ROOT / 'pourbaix-entries'
+
+
+class HookConfig(TypedDict):
+    """A hook config in prek.toml."""
+
+    id: str
+    args: NotRequired[list[str]]
+
+
+class RepoConfig(TypedDict):
+    """A repo config in prek.toml."""
+
+    repo: str
+    hooks: NotRequired[list[HookConfig]]
+
+
+class PrekConfig(TypedDict):
+    """The config in prek.toml."""
+
+    repos: list[RepoConfig]
+
+
+def _hook_args(hook_id: str) -> list[str]:
+    """Returns a hook's args from prek.toml, without --autofix.
+
+    Args:
+        hook_id: The hook id to look for in prek.toml
+
+    Returns:
+        The hook's args, without --autofix
+
+    Raises:
+        LookupError: If the hook id is not found in prek.toml
+    """
+    text = (PROJECT_ROOT / 'prek.toml').read_text(encoding='utf-8')
+    config = cast('PrekConfig', tomllib.loads(text))
+    for repo in config['repos']:
+        for hook in repo.get('hooks', []):
+            if hook['id'] == hook_id:
+                return [arg for arg in hook.get('args', []) if arg != '--autofix']
+    msg = f'Hook {hook_id!r} not found in prek.toml'
+    raise LookupError(msg)
+
+
+def test_saved_entries_pass_pretty_format_json(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """Entries saved to disk pass the pretty-format-json hook unchanged."""
+    monkeypatch.setattr('pourbaix.__main__.JSON_ENTRIES_DIR', ENTRIES_DIR)
+    entries = get_stored_pourbaix_entries('Fe')
+
+    monkeypatch.setattr('pourbaix.__main__.JSON_ENTRIES_DIR', tmp_path)
+    save_pourbaix_entries('Fe', entries)
+
+    saved = tmp_path / 'Fe.json'
+    assert pretty_format_json([*_hook_args('pretty-format-json'), str(saved)]) == 0
 
 
 def test_saved_entries_load_back_unchanged(
