@@ -10,6 +10,7 @@ from pre_commit_hooks.pretty_format_json import main as pretty_format_json
 from pourbaix.__main__ import (
     compounds_entries_to_disk,
     get_stored_pourbaix_entries,
+    retrieve_pourbaix_entries,
     save_pourbaix_entries,
 )
 
@@ -126,3 +127,18 @@ def test_uncached_compound_is_fetched_and_saved(
 
     retrieve.assert_called_once_with('Fe')
     save.assert_called_once_with('Fe', sentinel.entries)
+
+
+def test_entries_are_fetched_with_api_key(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Entries are fetched with the MP_API_KEY key, for the compound's system."""
+    monkeypatch.setattr('pourbaix.__main__.load_dotenv', Mock())
+    monkeypatch.setenv('MP_API_KEY', 'test-key')
+    mp_rester = Mock()
+    mp_rester.return_value.get_pourbaix_entries.return_value = sentinel.entries
+    monkeypatch.setattr('pourbaix.__main__.MPRester', mp_rester)
+
+    entries = retrieve_pourbaix_entries('Fe')
+
+    mp_rester.assert_called_once_with('test-key')
+    mp_rester.return_value.get_pourbaix_entries.assert_called_once_with(['Fe'])
+    assert entries is sentinel.entries
