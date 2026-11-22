@@ -10,6 +10,7 @@ from pre_commit_hooks.pretty_format_json import main as pretty_format_json
 from pourbaix.__main__ import (
     compounds_entries_to_disk,
     get_stored_pourbaix_entries,
+    plot_pourbaix_diagram,
     retrieve_pourbaix_entries,
     save_pourbaix_entries,
 )
@@ -142,3 +143,21 @@ def test_entries_are_fetched_with_api_key(monkeypatch: pytest.MonkeyPatch) -> No
     mp_rester.assert_called_once_with('test-key')
     mp_rester.return_value.get_pourbaix_entries.assert_called_once_with(['Fe'])
     assert entries is sentinel.entries
+
+
+def test_diagram_is_saved_as_png_and_shown(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """plot_pourbaix_diagram saves a PNG and calls plt.show() once."""
+    monkeypatch.setattr('pourbaix.__main__.JSON_ENTRIES_DIR', ENTRIES_DIR)
+    monkeypatch.setattr('pourbaix.__main__.DIAGRAMS_DIR', tmp_path)
+
+    fe_entries = get_stored_pourbaix_entries('Fe')
+
+    show = Mock()
+    monkeypatch.setattr('pourbaix.__main__.plt.show', show)
+
+    plot_pourbaix_diagram(['Fe'], fe_entries, {'Fe': 1.0}, {'Fe': 1e-8})
+
+    assert (tmp_path / 'Fe.png').read_bytes().startswith(b'\x89PNG')
+    show.assert_called_once()
