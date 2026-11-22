@@ -3,8 +3,10 @@
 import tomllib
 from pathlib import Path
 from typing import TYPE_CHECKING, NotRequired, TypedDict, cast
-from unittest.mock import Mock, sentinel
+from unittest.mock import Mock, create_autospec, sentinel
 
+import pytest
+from mp_api.client import MPRester
 from pre_commit_hooks.pretty_format_json import main as pretty_format_json
 
 from pourbaix.__main__ import (
@@ -17,7 +19,7 @@ from pourbaix.__main__ import (
 )
 
 if TYPE_CHECKING:
-    import pytest
+    from pymatgen.analysis.pourbaix_diagram import PourbaixEntry
 
 PROJECT_ROOT = Path(__file__).parents[1]
 
@@ -44,6 +46,18 @@ class PrekConfig(TypedDict):
     repos: list[RepoConfig]
 
 
+@pytest.fixture
+def fe_entries() -> list[PourbaixEntry]:
+    """The Fe entries from the repo's cache, loaded fresh for each test.
+
+    Returns:
+        The Pourbaix entries stored in pourbaix-entries/Fe.json
+    """
+    with pytest.MonkeyPatch.context() as mp:
+        mp.setattr('pourbaix.__main__.JSON_ENTRIES_DIR', ENTRIES_DIR)
+        return get_stored_pourbaix_entries('Fe')
+
+
 def _hook_args(hook_id: str) -> list[str]:
     """Returns a hook's args from prek.toml, without --autofix.
 
@@ -67,33 +81,27 @@ def _hook_args(hook_id: str) -> list[str]:
 
 
 def test_saved_entries_pass_pretty_format_json(
-    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path, fe_entries: list[PourbaixEntry]
 ) -> None:
     """Entries saved to disk pass the pretty-format-json hook unchanged."""
-    monkeypatch.setattr('pourbaix.__main__.JSON_ENTRIES_DIR', ENTRIES_DIR)
-    entries = get_stored_pourbaix_entries('Fe')
-
     monkeypatch.setattr('pourbaix.__main__.JSON_ENTRIES_DIR', tmp_path)
-    save_pourbaix_entries('Fe', entries)
+    save_pourbaix_entries('Fe', fe_entries)
 
     saved = tmp_path / 'Fe.json'
     assert pretty_format_json([*_hook_args('pretty-format-json'), str(saved)]) == 0
 
 
 def test_saved_entries_load_back_unchanged(
-    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path, fe_entries: list[PourbaixEntry]
 ) -> None:
     """Entries saved to disk load back with the same names and energies."""
-    monkeypatch.setattr('pourbaix.__main__.JSON_ENTRIES_DIR', ENTRIES_DIR)
-    original = get_stored_pourbaix_entries('Fe')
-
     monkeypatch.setattr('pourbaix.__main__.JSON_ENTRIES_DIR', tmp_path)
-    save_pourbaix_entries('Fe', original)
+    save_pourbaix_entries('Fe', fe_entries)
     loaded = get_stored_pourbaix_entries('Fe')
 
-    assert len(loaded) == len(original)
-    assert [e.name for e in loaded] == [e.name for e in original]
-    assert [e.energy for e in loaded] == [e.energy for e in original]
+    assert len(loaded) == len(fe_entries)
+    assert [e.name for e in loaded] == [e.name for e in fe_entries]
+    assert [e.energy for e in loaded] == [e.energy for e in fe_entries]
 
 
 def test_cached_compound_is_not_fetched(
@@ -135,7 +143,7 @@ def test_entries_are_fetched_with_api_key(monkeypatch: pytest.MonkeyPatch) -> No
     """Entries are fetched with the MP_API_KEY key, for the compound's system."""
     monkeypatch.setattr('pourbaix.__main__.load_dotenv', Mock())
     monkeypatch.setenv('MP_API_KEY', 'test-key')
-    mp_rester = Mock()
+    mp_rester = create_autospec(MPRester)
     mp_rester.return_value.get_pourbaix_entries.return_value = sentinel.entries
     monkeypatch.setattr('pourbaix.__main__.MPRester', mp_rester)
 
@@ -147,13 +155,10 @@ def test_entries_are_fetched_with_api_key(monkeypatch: pytest.MonkeyPatch) -> No
 
 
 def test_diagram_is_saved_as_png_and_shown(
-    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path, fe_entries: list[PourbaixEntry]
 ) -> None:
     """plot_pourbaix_diagram saves a PNG and calls plt.show() once."""
-    monkeypatch.setattr('pourbaix.__main__.JSON_ENTRIES_DIR', ENTRIES_DIR)
     monkeypatch.setattr('pourbaix.__main__.DIAGRAMS_DIR', tmp_path)
-
-    fe_entries = get_stored_pourbaix_entries('Fe')
 
     show = Mock()
     monkeypatch.setattr('pourbaix.__main__.plt.show', show)
