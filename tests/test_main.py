@@ -3,7 +3,7 @@
 import tomllib
 from pathlib import Path
 from typing import TYPE_CHECKING, NotRequired, TypedDict, cast
-from unittest.mock import Mock
+from unittest.mock import Mock, sentinel
 
 from pre_commit_hooks.pretty_format_json import main as pretty_format_json
 
@@ -108,3 +108,21 @@ def test_cached_compound_is_not_fetched(
 
     retrieve.assert_not_called()
     assert cached.stat().st_size == 0
+
+
+def test_uncached_compound_is_fetched_and_saved(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """A compound whose JSON file does not exist is fetched and saved."""
+    monkeypatch.setattr('pourbaix.__main__.JSON_ENTRIES_DIR', tmp_path)
+
+    retrieve = Mock(return_value=sentinel.entries)
+    monkeypatch.setattr('pourbaix.__main__.retrieve_pourbaix_entries', retrieve)
+
+    save = Mock()
+    monkeypatch.setattr('pourbaix.__main__.save_pourbaix_entries', save)
+
+    compounds_entries_to_disk(['Fe'])
+
+    retrieve.assert_called_once_with('Fe')
+    save.assert_called_once_with('Fe', sentinel.entries)
