@@ -10,6 +10,7 @@ from pre_commit_hooks.pretty_format_json import main as pretty_format_json
 from pourbaix.__main__ import (
     compounds_entries_to_disk,
     get_stored_pourbaix_entries,
+    main,
     plot_pourbaix_diagram,
     retrieve_pourbaix_entries,
     save_pourbaix_entries,
@@ -161,3 +162,22 @@ def test_diagram_is_saved_as_png_and_shown(
 
     assert (tmp_path / 'Fe.png').read_bytes().startswith(b'\x89PNG')
     show.assert_called_once()
+
+
+def test_main_plots_iron_diagram(monkeypatch: pytest.MonkeyPatch) -> None:
+    """The main function connects the steps of fetching entries and plotting."""
+    to_disk = Mock()
+    monkeypatch.setattr('pourbaix.__main__.compounds_entries_to_disk', to_disk)
+
+    get_stored = Mock(return_value=[sentinel.fe_entry])
+    monkeypatch.setattr('pourbaix.__main__.get_stored_pourbaix_entries', get_stored)
+
+    plot = Mock()
+    monkeypatch.setattr('pourbaix.__main__.plot_pourbaix_diagram', plot)
+
+    exit_code = main()
+
+    assert exit_code == 0
+    to_disk.assert_called_once_with(['Fe'])
+    get_stored.assert_called_once_with('Fe')
+    plot.assert_called_once_with(['Fe'], [sentinel.fe_entry], {'Fe': 1.0}, {'Fe': 1e-8})
