@@ -12,10 +12,10 @@ recommended) or a GUI (tkinter, pygame, etc.) here. Whatever you pick,
 `[project.scripts]` in pyproject.toml already points at `main` below.
 """
 
-import glob
 import json
 import os
 import sys
+from pathlib import Path
 from typing import Any
 
 import matplotlib.pyplot as plt
@@ -30,8 +30,8 @@ from pymatgen.analysis.pourbaix_diagram import (
 )
 
 # Paths to save and retrieve
-JSON_ENTRIES_DIR: str = 'pourbaix-entries'
-DIAGRAMS_DIR: str = 'pourbaix-diagrams'
+JSON_ENTRIES_DIR = Path('pourbaix-entries')
+DIAGRAMS_DIR = Path('pourbaix-diagrams')
 
 
 def main() -> int:
@@ -75,6 +75,18 @@ def main() -> int:
     return 0
 
 
+def _entries_path(compound: str) -> Path:
+    """Returns the path of the cached entries file for a compound.
+
+    Args:
+        compound: Abbreviated name of the compound.
+
+    Returns:
+        Path where the cached entries file lives.
+    """
+    return JSON_ENTRIES_DIR / f'{compound}.json'
+
+
 def compounds_entries_to_disk(compounds: list[str]) -> None:
     """Retrieves Pourbaix entries for the given compounds and saves them to disk.
 
@@ -85,7 +97,7 @@ def compounds_entries_to_disk(compounds: list[str]) -> None:
         compounds: Elements for which to retrieve Pourbaix entries
     """
     for compound in compounds:
-        if len(glob.glob(f'{JSON_ENTRIES_DIR}/{compound}.json')) > 0:
+        if _entries_path(compound).exists():
             continue
         else:
             entries = retrieve_pourbaix_entries(compound)
@@ -126,10 +138,10 @@ def save_pourbaix_entries(compound: str, entries: list[PourbaixEntry]) -> None:
     entries_dct: list[dict[str, Any]] = [entry.as_dict() for entry in entries]
 
     # Save list of Pourbaix entries to disk
-    with open(f'{JSON_ENTRIES_DIR}/{compound}.json', 'w', encoding='utf-8') as out_file:
-        out_file.write(
-            json.dumps(entries_dct, indent=4, sort_keys=True, ensure_ascii=False) + '\n'
-        )
+    _entries_path(compound).write_text(
+        json.dumps(entries_dct, indent=4, sort_keys=True, ensure_ascii=False) + '\n',
+        encoding='utf-8',
+    )
 
 
 def get_stored_pourbaix_entries(compound: str) -> list[PourbaixEntry]:
@@ -142,8 +154,9 @@ def get_stored_pourbaix_entries(compound: str) -> list[PourbaixEntry]:
         List of Pourbaix entry objects
     """
     # Retrieve list of Pourbaix entries from JSON file on disk
-    with open(f'{JSON_ENTRIES_DIR}/{compound}.json', encoding='utf-8') as in_file:
-        entries_dct: list[dict[str, Any]] = json.loads(in_file.read())
+    entries_dct: list[dict[str, Any]] = json.loads(
+        _entries_path(compound).read_text(encoding='utf-8')
+    )
 
     # Populate list with PourbaixEntry objects from dictionaries
     return [PourbaixEntry.from_dict(entry_dct) for entry_dct in entries_dct]
@@ -195,7 +208,7 @@ def plot_pourbaix_diagram(
     plt.tight_layout()
 
     # Save and display the plot using plt.show()
-    plt.savefig(f'{DIAGRAMS_DIR}/{filename}.png', dpi='figure', format='png')
+    plt.savefig(DIAGRAMS_DIR / f'{filename}.png', dpi='figure', format='png')
     plt.show()
 
 
