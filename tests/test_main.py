@@ -51,7 +51,7 @@ def fe_entries() -> list[PourbaixEntry]:
     """The Fe entries from the repo's cache, loaded fresh for each test.
 
     Returns:
-        The Pourbaix entries stored in pourbaix-entries/Fe.json
+        The Pourbaix entries stored in pourbaix-entries/Fe.json.
     """
     with pytest.MonkeyPatch.context() as mp:
         mp.setattr('pourbaix.__main__.JSON_ENTRIES_DIR', ENTRIES_DIR)
@@ -62,13 +62,13 @@ def _hook_args(hook_id: str) -> list[str]:
     """Returns a hook's args from prek.toml, without --autofix.
 
     Args:
-        hook_id: The hook id to look for in prek.toml
+        hook_id: The hook id to look for in prek.toml.
 
     Returns:
-        The hook's args, without --autofix
+        The hook's args, without --autofix.
 
     Raises:
-        LookupError: If the hook id is not found in prek.toml
+        LookupError: If the hook id is not found in prek.toml.
     """
     text = (PROJECT_ROOT / 'prek.toml').read_text(encoding='utf-8')
     config = cast('PrekConfig', tomllib.loads(text))

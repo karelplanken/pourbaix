@@ -4,12 +4,6 @@ This script allows the user to generate a Pourbaix diagram for a single
 or multi element system in water.
 
 Adjust the list of elements defined in main() to your needs.
-
-Entry point for Pourbaix Diagram Generator.
-
-Toolkit-agnostic stub — see README.md for how to wire up a CLI (Typer
-recommended) or a GUI (tkinter, pygame, etc.) here. Whatever you pick,
-`[project.scripts]` in pyproject.toml already points at `main` below.
 """
 
 import json
@@ -29,7 +23,7 @@ from pymatgen.analysis.pourbaix_diagram import (
     PourbaixPlotter,
 )
 
-# Paths to save and retrieve
+# Folders for the cached entries and the saved diagrams
 JSON_ENTRIES_DIR = Path('pourbaix-entries')
 DIAGRAMS_DIR = Path('pourbaix-diagrams')
 
@@ -43,7 +37,7 @@ def main() -> int:
     periodic table of the elements.
 
     Returns:
-        Exit code (0 for success, 1 for failure)
+        Exit code (0 for success, 1 for failure).
     """
     compounds: list[str] = ['Fe']
 
@@ -53,8 +47,7 @@ def main() -> int:
         )
         return 1
 
-    # Save the retrieved entries if not already on disk, might
-    # helpful for next time to not bother the MP API with requests
+    # Save the retrieved entries if not already on disk
     compounds_entries_to_disk(compounds)
 
     # Now that all entries are on disk, load them
@@ -90,7 +83,7 @@ def compounds_entries_to_disk(compounds: list[str]) -> None:
     Project API and saved to disk.
 
     Args:
-        compounds: Elements for which to retrieve Pourbaix entries
+        compounds: Elements for which to retrieve Pourbaix entries.
     """
     for compound in compounds:
         if _entries_path(compound).exists():
@@ -103,12 +96,12 @@ def retrieve_pourbaix_entries(compound: str) -> list[PourbaixEntry]:
     """Retrieves Pourbaix entries for a given compound from the Materials Project API.
 
     Args:
-        compound: Element for which to retrieve Pourbaix entries
+        compound: Element for which to retrieve Pourbaix entries.
 
     Returns:
-        List of Pourbaix entry objects
+        List of Pourbaix entry objects.
     """
-    # Materials project needs API key, obtain one yourself at
+    # Materials project needs an API key, obtain one yourself at
     # https://next-gen.materialsproject.org/api
     load_dotenv(override=True)
     api_key = os.getenv('MP_API_KEY')
@@ -124,8 +117,8 @@ def save_pourbaix_entries(compound: str, entries: list[PourbaixEntry]) -> None:
     """Saves Pourbaix entries for a given compound to disk as JSON.
 
     Args:
-        compound: Element for which to save Pourbaix entries
-        entries: List of Pourbaix entry objects to save
+        compound: Element for which to save Pourbaix entries.
+        entries: List of Pourbaix entry objects to save.
     """
     # Serialize list of Pourbaix entries to save as JSON
     entries_dct: list[dict[str, Any]] = [entry.as_dict() for entry in entries]
@@ -141,10 +134,10 @@ def get_stored_pourbaix_entries(compound: str) -> list[PourbaixEntry]:
     """Retrieves stored Pourbaix entries for a given compound from disk.
 
     Args:
-        compound: Element for which to retrieve stored Pourbaix entries
+        compound: Element for which to retrieve stored Pourbaix entries.
 
     Returns:
-        List of Pourbaix entry objects
+        List of Pourbaix entry objects.
     """
     # Retrieve list of Pourbaix entries from JSON file on disk
     entries_dct: list[dict[str, Any]] = json.loads(
@@ -163,20 +156,20 @@ def plot_pourbaix_diagram(
 ) -> None:
     """Plots a Pourbaix diagram for the given compounds and entries.
 
-    comp_dict and conc_dct are passed on to pymatgen's PourbaixDiagram,
-    where both are optional: without them, pymatgen uses equal parts of
-    each element and an ion concentration of 1e-6 M.
+    comp_dict and conc_dct are passed on to pymatgen's PourbaixDiagram, where both are
+    optional: without them, pymatgen uses equal parts of each element and an ion
+    concentration of 1e-6 M.
 
-    The same holds for optional arguments as plot title, limits (xlim, ylim), and
-    others. See pymatgen.analysis.pourbaix_diagram.PourbaixPlotter.get_pourbaix_plot().
+    See pymatgen.analysis.pourbaix_diagram.PourbaixPlotter.get_pourbaix_plot() for the
+    other optional arguments.
 
     Args:
-        compounds: List of elements for which to plot the Pourbaix diagram
-        entries: List of Pourbaix entry objects to use for plotting
-        comp_dict: Relative system composition of elements
-        conc_dct: Concentration of ions
+        compounds: List of elements for which to plot the Pourbaix diagram.
+        entries: List of Pourbaix entry objects to use for plotting.
+        comp_dict: Relative system composition of elements.
+        conc_dct: Concentration of ions.
     """
-    # Filename to save png
+    # Filename to save the plot
     filename = ''.join(compound for compound in compounds)
 
     # Construct the PourbaixDiagram object
@@ -210,5 +203,5 @@ def plot_pourbaix_diagram(
 
 
 if __name__ == '__main__':
-    # If script is run via in shell then main is called
+    # If script is run directly, execute the main function and exit with its return code
     sys.exit(main())
