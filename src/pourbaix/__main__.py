@@ -48,7 +48,9 @@ def main() -> int:
     compounds: list[str] = ['Fe']
 
     if len(compounds) == 0:
-        print('Add at least one element to the compounds list!')
+        print(  # ruff: ignore[print]
+            'Add at least one element to the compounds list!', file=sys.stderr
+        )
         return 1
 
     # Save the retrieved entries if not already on disk, might
@@ -56,21 +58,15 @@ def main() -> int:
     compounds_entries_to_disk(compounds)
 
     # Now that all entries are on disk, load them
-    all_entries: list[PourbaixEntry] = list()
+    all_entries: list[PourbaixEntry] = []
     for compound in compounds:
         all_entries.extend(get_stored_pourbaix_entries(compound))
 
     # Create a compounds and concentration dict
-    n_compounds = len(compounds)
-    if n_compounds > 1:
-        comp_dct = {compound: 1 / n_compounds for compound in compounds}
-        conc_dct = {compound: 1e-8 for compound in compounds}
-    else:
-        comp_dct = {compounds[0]: 1.0}
-        conc_dct = {compounds[0]: 1e-8}
+    comp_dct = dict.fromkeys(compounds, 1 / len(compounds))
+    conc_dct = dict.fromkeys(compounds, 1e-8)
 
     plot_pourbaix_diagram(compounds, all_entries, comp_dct, conc_dct)
-    # plot_pourbaix_diagram(compounds, all_entries)
 
     return 0
 
@@ -99,9 +95,8 @@ def compounds_entries_to_disk(compounds: list[str]) -> None:
     for compound in compounds:
         if _entries_path(compound).exists():
             continue
-        else:
-            entries = retrieve_pourbaix_entries(compound)
-            save_pourbaix_entries(compound, entries)
+        entries = retrieve_pourbaix_entries(compound)
+        save_pourbaix_entries(compound, entries)
 
 
 def retrieve_pourbaix_entries(compound: str) -> list[PourbaixEntry]:
@@ -122,9 +117,7 @@ def retrieve_pourbaix_entries(compound: str) -> list[PourbaixEntry]:
     mpr = MPRester(api_key)
 
     # Get Pourbaix entries for compound-O-H chemical system
-    entries = mpr.get_pourbaix_entries([compound])
-
-    return entries
+    return mpr.get_pourbaix_entries([compound])
 
 
 def save_pourbaix_entries(compound: str, entries: list[PourbaixEntry]) -> None:
@@ -170,6 +163,13 @@ def plot_pourbaix_diagram(
 ) -> None:
     """Plots a Pourbaix diagram for the given compounds and entries.
 
+    comp_dict and conc_dct are passed on to pymatgen's PourbaixDiagram,
+    where both are optional: without them, pymatgen uses equal parts of
+    each element and an ion concentration of 1e-6 M.
+
+    The same holds for optional arguments as plot title, limits (xlim, ylim), and
+    others. See pymatgen.analysis.pourbaix_diagram.PourbaixPlotter.get_pourbaix_plot().
+
     Args:
         compounds: List of elements for which to plot the Pourbaix diagram
         entries: List of Pourbaix entry objects to use for plotting
@@ -181,10 +181,8 @@ def plot_pourbaix_diagram(
 
     # Construct the PourbaixDiagram object
     pbx = PourbaixDiagram(entries, comp_dict, conc_dct, filter_solids=True)
-    # pbx = PourbaixDiagram(entries, filter_solids=True)
 
     # Initialize a PourbaixPlotter object using a PourbaixDiagram object
-    # instance
     plotter = PourbaixPlotter(pbx)
 
     # Value for uniform font size on plot
@@ -193,7 +191,6 @@ def plot_pourbaix_diagram(
     # Get the diagram as plt.Axes object
     ax = plotter.get_pourbaix_plot(
         limits=((0, 14), (-3, 3)),
-        # title="Title for Diagram",
         label_domains=True,
         label_fontsize=fontsize,
         show_water_lines=True,
