@@ -1,0 +1,147 @@
+# Project metadata --------------------------------------------------------------------
+[project]
+name = "pourbaix"
+version = "0.1.0"
+description = "Generate Pourbaix diagrams with pymatgen and the Materials Project API."
+requires-python = ">=3.14"
+readme = "README.md"
+authors = [{ name = "Karel Planken" }]
+keywords = ["pourbaix", "pymatgen", "materials-project", "electrochemistry"]
+dependencies = [
+    "matplotlib>=3.11.2",
+    "mp-api>=0.46.5",
+    "pymatgen>=2026.9.24",
+    "python-dotenv>=1.2.4",
+]
+
+[project.scripts]
+pourbaix = "pourbaix.__main__:main"
+
+# Dev dependencies --------------------------------------------------------------------
+# codespell/complexipy/mypy/prek ship as PyPI wheels, so they live here.
+# gitleaks is a standalone Go binary — install it separately, see README.
+[dependency-groups]
+dev = [
+    "codespell",
+    "complexipy",
+    "prek",
+    "pytest",
+    "pytest-cov",
+    "ruff",
+    "mypy",
+    "pre-commit-hooks==6.0.0",
+]
+
+# Build backend -----------------------------------------------------------------------
+[build-system]
+requires = ["uv_build>=0.13.9,<0.14"]
+build-backend = "uv_build"
+
+# Ruff (lint + format) — ported 1:1 from your global ruff.toml ------------------------
+[tool.ruff]
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+line-length = 88
+indent-width = 4
+target-version = "py314"
+
+[tool.ruff.lint]
+preview = true
+# Everything on; each exception below says why. A ruff bump (pinned in
+# uv.lock) can add rules: fix them or list them here.
+select = ["ALL"]
+ignore = [
+    "COM812",  # missing-trailing-comma: conflicts with the formatter
+    "CPY001",  # missing-copyright-notice: no header in every file
+    "D417",  # undocumented-param: not every parameter needs documenting
+    "Q",  # flake8-quotes: the formatter owns quote style
+    "RUF201",  # rule-codes-in-selectors: codes are what noqa/output use
+]
+fixable = ["ALL"]
+unfixable = []
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.lint.per-file-ignores]
+# pytest style: bare assert, literal expected values, and no __init__.py
+# (pytest imports test files by path).
+"tests/**" = ["INP001", "PLR2004", "S101"]
+
+[tool.ruff.lint.pydocstyle]
+# Also silently disables rules that conflict with "google" (e.g. D413).
+convention = "google"
+
+[tool.ruff.lint.isort]
+case-sensitive = true
+
+[tool.ruff.format]
+preview = true
+quote-style = "single"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = true
+docstring-code-line-length = "dynamic"
+
+# mypy (type checking) ----------------------------------------------------------------
+[tool.mypy]
+strict = true
+
+# Individual strict-bundle flags can be overridden below if one gets too noisy
+# for a specific area, e.g.:
+# disallow_untyped_defs = false
+
+# pymatgen leaves some methods unannotated (e.g. PourbaixEntry.as_dict).
+untyped_calls_exclude = ["pymatgen"]
+
+[[tool.mypy.overrides]]
+module = ["pre_commit_hooks.*"]
+follow_untyped_imports = true
+
+# pyright / Pylance (editor type checking) --------------------------------------------
+[tool.pyright]
+typeCheckingMode = "strict"
+# Third-party libraries leave parameters unannotated (matplotlib's **kwargs in
+# pyplot/Axes, pymatgen's bare `dict` in MSONable.from_dict), which strict mode
+# reports at every call site. mypy (strict) already checks our own code.
+reportUnknownMemberType = "none"
+reportMissingTypeStubs = "none"
+
+# complexipy (cognitive complexity) ---------------------------------------------------
+[tool.complexipy]
+max-complexity-allowed = 15
+
+# pytest / coverage -------------------------------------------------------------------
+# --cov-fail-under is a starting point, not a mandate — adjust per project.
+[tool.pytest.ini_options]
+testpaths = ["tests/"]
+addopts = "--cov=pourbaix --cov-report=term-missing --cov-fail-under=80"
+
+# codespell ---------------------------------------------------------------------------
+[tool.codespell]
+skip = "*.lock,.venv"

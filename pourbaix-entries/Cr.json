@@ -1,0 +1,2389 @@
+[
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1e-06,
+        "entry": {
+            "energy": -13.46034858117661,
+            "ion": {
+                "Cr": 2.0,
+                "O": 7.0,
+                "charge": -2.0
+            },
+            "name": "Cr2O7[-2]"
+        },
+        "entry_id": "ion-0",
+        "entry_type": "Ion"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1e-06,
+        "entry": {
+            "energy": -4.450752618825855,
+            "ion": {
+                "Cr": 1.0,
+                "H": 1.0,
+                "O": 1.0,
+                "charge": 2.0
+            },
+            "name": "CrOH[+2]"
+        },
+        "entry_id": "ion-1",
+        "entry_type": "Ion"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1e-06,
+        "entry": {
+            "energy": -1.8107567645479876,
+            "ion": {
+                "Cr": 1.0,
+                "charge": 2.0
+            },
+            "name": "Cr[+2]"
+        },
+        "entry_id": "ion-2",
+        "entry_type": "Ion"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1e-06,
+        "entry": {
+            "energy": -2.2209759696057687,
+            "ion": {
+                "Cr": 1.0,
+                "charge": 3.0
+            },
+            "name": "Cr[+3]"
+        },
+        "entry_id": "ion-3",
+        "entry_type": "Ion"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1e-06,
+        "entry": {
+            "energy": -7.529780446985672,
+            "ion": {
+                "Cr": 1.0,
+                "O": 4.0,
+                "charge": -2.0
+            },
+            "name": "CrO4[-2]"
+        },
+        "entry_id": "ion-4",
+        "entry_type": "Ion"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1e-06,
+        "entry": {
+            "energy": -7.913156101232446,
+            "ion": {
+                "Cr": 1.0,
+                "H": 1.0,
+                "O": 4.0,
+                "charge": -1.0
+            },
+            "name": "CrHO4[-1]"
+        },
+        "entry_id": "ion-5",
+        "entry_type": "Ion"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 2.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": 0.6718167600000022,
+            "energy_adjustments": [],
+            "entry_id": "mp-1059289-GGA",
+            "parameters": {}
+        },
+        "entry_id": "mp-1059289-GGA",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 8.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": 0.6490278600000039,
+            "energy_adjustments": [],
+            "entry_id": "mp-17-GGA",
+            "parameters": {}
+        },
+        "entry_id": "mp-17-GGA",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 2.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": 0.0,
+            "energy_adjustments": [],
+            "entry_id": "mp-90-GGA",
+            "parameters": {}
+        },
+        "entry_id": "mp-90-GGA",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 28.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": 7.380190860000027,
+            "energy_adjustments": [],
+            "entry_id": "mp-1192789-GGA",
+            "parameters": {}
+        },
+        "entry_id": "mp-1192789-GGA",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 2.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": 0.8406802100000021,
+            "energy_adjustments": [],
+            "entry_id": "mp-89-GGA",
+            "parameters": {}
+        },
+        "entry_id": "mp-89-GGA",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 1.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": 0.4025263400000014,
+            "energy_adjustments": [],
+            "entry_id": "mp-8633-GGA",
+            "parameters": {}
+        },
+        "entry_id": "mp-8633-GGA",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "H": 4.0,
+                "O": 8.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -26.66923405,
+            "energy_adjustments": [],
+            "entry_id": "mp-675232-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-675232-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 2.0,
+                "H": 2.0,
+                "O": 4.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -13.2353369,
+            "energy_adjustments": [],
+            "entry_id": "mp-24040-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-24040-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 1.0,
+                "H": 5.0,
+                "O": 4.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -3.500237740000003,
+            "energy_adjustments": [],
+            "entry_id": "mp-1226463-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1226463-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 6.0,
+                "H": 2.0,
+                "O": 16.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -30.589715439999992,
+            "energy_adjustments": [],
+            "entry_id": "mp-602355-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-602355-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 2.0,
+                "H": 1.0,
+                "O": 4.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -11.580193180000002,
+            "energy_adjustments": [],
+            "entry_id": "mp-33500-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-33500-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 2.0,
+                "H": 1.0,
+                "O": 4.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -11.96944045,
+            "energy_adjustments": [],
+            "entry_id": "mp-675581-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-675581-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "H": 4.0,
+                "O": 8.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -26.68071511000001,
+            "energy_adjustments": [],
+            "entry_id": "mp-23910-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-23910-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "H": 4.0,
+                "O": 8.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -26.543100660000007,
+            "energy_adjustments": [],
+            "entry_id": "mp-626703-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-626703-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 1.0,
+                "H": 2.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": 1.142597630000001,
+            "energy_adjustments": [],
+            "entry_id": "mp-24208-GGA",
+            "parameters": {}
+        },
+        "entry_id": "mp-24208-GGA",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 3.0,
+                "H": 1.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": 3.5586857000000016,
+            "energy_adjustments": [],
+            "entry_id": "mp-1183723-GGA",
+            "parameters": {}
+        },
+        "entry_id": "mp-1183723-GGA",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 1.0,
+                "H": 3.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": 2.278891480000002,
+            "energy_adjustments": [],
+            "entry_id": "mp-1183679-GGA",
+            "parameters": {}
+        },
+        "entry_id": "mp-1183679-GGA",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 2.0,
+                "H": 2.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": 1.7174017899999967,
+            "energy_adjustments": [],
+            "entry_id": "mp-24669-GGA",
+            "parameters": {}
+        },
+        "entry_id": "mp-24669-GGA",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 1.0,
+                "H": 1.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": 0.5269017999999992,
+            "energy_adjustments": [],
+            "entry_id": "mp-24287-GGA",
+            "parameters": {}
+        },
+        "entry_id": "mp-24287-GGA",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 2.0,
+                "H": 2.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": 2.5175386899999985,
+            "energy_adjustments": [],
+            "entry_id": "mp-1007992-GGA",
+            "parameters": {}
+        },
+        "entry_id": "mp-1007992-GGA",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 1.0,
+                "O": 1.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -2.8925548049999996,
+            "energy_adjustments": [],
+            "entry_id": "mp-19091-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-19091-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 4.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -14.464172019999992,
+            "energy_adjustments": [],
+            "entry_id": "mp-1283577-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1283577-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 8.0,
+                "O": 8.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -26.416062579999988,
+            "energy_adjustments": [],
+            "entry_id": "mp-754983-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-754983-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 8.0,
+                "O": 20.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -41.89427193,
+            "energy_adjustments": [],
+            "entry_id": "mp-776160-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-776160-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 10.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -20.23370141000001,
+            "energy_adjustments": [],
+            "entry_id": "mp-1043300-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1043300-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 8.0,
+                "O": 18.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -38.36695123000001,
+            "energy_adjustments": [],
+            "entry_id": "mp-1041443-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1041443-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 32.0,
+                "O": 48.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -145.041879,
+            "energy_adjustments": [],
+            "entry_id": "mp-1245208-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1245208-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 32.0,
+                "O": 48.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -144.48417894,
+            "energy_adjustments": [],
+            "entry_id": "mp-1245247-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1245247-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 8.0,
+                "O": 12.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -37.53534891000001,
+            "energy_adjustments": [],
+            "entry_id": "mp-1043379-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1043379-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 16.0,
+                "O": 24.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -85.39650475000002,
+            "energy_adjustments": [],
+            "entry_id": "mp-776873-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-776873-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 16.0,
+                "O": 32.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -79.62019247000006,
+            "energy_adjustments": [],
+            "entry_id": "mp-1349242-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1349242-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 20.0,
+                "O": 48.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -109.38703695999999,
+            "energy_adjustments": [],
+            "entry_id": "mp-773920-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-773920-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 6.0,
+                "O": 2.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": 1.290371179999994,
+            "energy_adjustments": [],
+            "entry_id": "mp-714896-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-714896-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 2.0,
+                "O": 1.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": 0.33796688500000016,
+            "energy_adjustments": [],
+            "entry_id": "mp-1206821-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1206821-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 12.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -17.872830960000016,
+            "energy_adjustments": [],
+            "entry_id": "mp-1389926-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1389926-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 12.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -20.15543347000002,
+            "energy_adjustments": [],
+            "entry_id": "mp-772550-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-772550-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 12.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -19.882504769999997,
+            "energy_adjustments": [],
+            "entry_id": "mp-778667-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-778667-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 2.0,
+                "O": 6.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -10.189273020000002,
+            "energy_adjustments": [],
+            "entry_id": "mp-510421-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-510421-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 6.0,
+                "O": 18.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -12.824486809999996,
+            "energy_adjustments": [],
+            "entry_id": "mp-1330490-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1330490-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 3.0,
+                "O": 8.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -14.604149489999998,
+            "energy_adjustments": [],
+            "entry_id": "mp-545771-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-545771-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 3.0,
+                "O": 8.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -12.328680049999988,
+            "energy_adjustments": [],
+            "entry_id": "mp-1388338-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1388338-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 6.0,
+                "O": 6.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -19.857785899999996,
+            "energy_adjustments": [],
+            "entry_id": "mp-1178414-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1178414-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 8.0,
+                "O": 21.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -13.315091615,
+            "energy_adjustments": [],
+            "entry_id": "mp-1396459-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1396459-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 2.0,
+                "O": 2.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -6.884155790000001,
+            "energy_adjustments": [],
+            "entry_id": "mp-1178416-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1178416-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 4.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -14.116674930000002,
+            "energy_adjustments": [],
+            "entry_id": "mp-1272524-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1272524-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 6.0,
+                "O": 6.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -19.710216720000005,
+            "energy_adjustments": [],
+            "entry_id": "mp-755286-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-755286-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 32.0,
+                "O": 48.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -145.19060598,
+            "energy_adjustments": [],
+            "entry_id": "mp-1245064-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1245064-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 32.0,
+                "O": 48.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -137.24976950000007,
+            "energy_adjustments": [],
+            "entry_id": "mp-1245091-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1245091-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 32.0,
+                "O": 48.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -137.22456271,
+            "energy_adjustments": [],
+            "entry_id": "mp-1245327-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1245327-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 8.0,
+                "O": 12.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -42.59747134,
+            "energy_adjustments": [],
+            "entry_id": "mp-755749-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-755749-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 6.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -21.765491690000005,
+            "energy_adjustments": [],
+            "entry_id": "mp-19399-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-19399-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 2.0,
+                "O": 4.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -9.911917560000006,
+            "energy_adjustments": [],
+            "entry_id": "mp-714929-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-714929-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 2.0,
+                "O": 4.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -11.014716940000007,
+            "energy_adjustments": [],
+            "entry_id": "mp-21395-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-21395-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 8.0,
+                "O": 16.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -39.84741502000003,
+            "energy_adjustments": [],
+            "entry_id": "mp-1044871-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1044871-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 8.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -21.705420750000016,
+            "energy_adjustments": [],
+            "entry_id": "mp-1102412-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1102412-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 8.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -21.359990190000005,
+            "energy_adjustments": [],
+            "entry_id": "mp-1181747-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1181747-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 8.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -20.05172454000001,
+            "energy_adjustments": [],
+            "entry_id": "mp-1389152-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1389152-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 8.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -21.24335348000001,
+            "energy_adjustments": [],
+            "entry_id": "mp-1394584-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1394584-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 8.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -19.75069846000001,
+            "energy_adjustments": [],
+            "entry_id": "mp-1388847-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1388847-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 1.0,
+                "O": 2.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -4.886985440000004,
+            "energy_adjustments": [],
+            "entry_id": "mp-25302-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-25302-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 1.0,
+                "O": 2.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -4.931405690000002,
+            "energy_adjustments": [],
+            "entry_id": "mp-1009555-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1009555-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 8.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -19.741920910000005,
+            "energy_adjustments": [],
+            "entry_id": "mp-1400837-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1400837-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 8.0,
+                "O": 21.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -42.24079312499998,
+            "energy_adjustments": [],
+            "entry_id": "mp-558855-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-558855-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 12.0,
+                "O": 22.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -65.22762209000001,
+            "energy_adjustments": [],
+            "entry_id": "mp-1213798-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1213798-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 12.0,
+                "O": 28.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -59.89140558999998,
+            "energy_adjustments": [],
+            "entry_id": "mp-1044455-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1044455-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 6.0,
+                "O": 2.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": 7.205180199999994,
+            "energy_adjustments": [],
+            "entry_id": "mp-20609-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-20609-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 6.0,
+                "O": 8.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -27.63250715000001,
+            "energy_adjustments": [],
+            "entry_id": "mp-1310867-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1310867-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 4.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -14.131801119999992,
+            "energy_adjustments": [],
+            "entry_id": "mp-1302566-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1302566-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 2.0,
+                "O": 2.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -6.848640490000001,
+            "energy_adjustments": [],
+            "entry_id": "mp-1273363-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1273363-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 4.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -14.469787839999995,
+            "energy_adjustments": [],
+            "entry_id": "mp-755073-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-755073-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 9.0,
+                "O": 13.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -40.718544925,
+            "energy_adjustments": [],
+            "entry_id": "mp-1045826-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1045826-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 10.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -17.810760670000008,
+            "energy_adjustments": [],
+            "entry_id": "mp-1402326-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1402326-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 10.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -20.205221320000007,
+            "energy_adjustments": [],
+            "entry_id": "mp-1397432-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1397432-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 32.0,
+                "O": 48.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -141.56371076000005,
+            "energy_adjustments": [],
+            "entry_id": "mp-1244988-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1244988-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 6.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -21.14362206,
+            "energy_adjustments": [],
+            "entry_id": "mp-753829-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-753829-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 8.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -19.592407260000016,
+            "energy_adjustments": [],
+            "entry_id": "mp-2214915-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-2214915-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 8.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -19.792322330000005,
+            "energy_adjustments": [],
+            "entry_id": "mp-1047643-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1047643-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 2.0,
+                "O": 4.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": 0.448498139999991,
+            "energy_adjustments": [],
+            "entry_id": "mp-1446026-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1446026-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 12.0,
+                "O": 24.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -59.51447102999998,
+            "energy_adjustments": [],
+            "entry_id": "mp-1040967-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1040967-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 2.0,
+                "O": 4.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -8.722067750000008,
+            "energy_adjustments": [],
+            "entry_id": "mp-1399565-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1399565-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 8.0,
+                "O": 16.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -42.37420866000002,
+            "energy_adjustments": [],
+            "entry_id": "mp-1047121-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1047121-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 8.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -21.973125970000012,
+            "energy_adjustments": [],
+            "entry_id": "mp-1281333-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1281333-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 2.0,
+                "O": 4.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -11.019281170000006,
+            "energy_adjustments": [],
+            "entry_id": "mp-19177-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-19177-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 12.0,
+                "O": 24.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -59.45191031000002,
+            "energy_adjustments": [],
+            "entry_id": "mp-1358572-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1358572-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 8.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -20.85714793000001,
+            "energy_adjustments": [],
+            "entry_id": "mp-1102170-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1102170-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 10.0,
+                "O": 14.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -40.75341899999998,
+            "energy_adjustments": [],
+            "entry_id": "mp-1046050-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1046050-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 20.0,
+                "O": 48.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -107.67513542,
+            "energy_adjustments": [],
+            "entry_id": "mp-13869-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-13869-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 6.0,
+                "O": 8.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -27.859008679999988,
+            "energy_adjustments": [],
+            "entry_id": "mp-756253-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-756253-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 19.0,
+                "O": 48.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -97.44846163,
+            "energy_adjustments": [],
+            "entry_id": "mp-780521-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-780521-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 12.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -19.87462512000002,
+            "energy_adjustments": [],
+            "entry_id": "mp-755211-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-755211-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 1.0,
+                "O": 3.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -4.866090995,
+            "energy_adjustments": [],
+            "entry_id": "mp-753740-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-753740-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 2.0,
+                "O": 6.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -10.10567967,
+            "energy_adjustments": [],
+            "entry_id": "mp-715566-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-715566-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 12.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -19.540400500000004,
+            "energy_adjustments": [],
+            "entry_id": "mp-756041-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-756041-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 2.0,
+                "O": 6.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -3.069396089999998,
+            "energy_adjustments": [],
+            "entry_id": "mp-1387606-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1387606-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 1.0,
+                "O": 3.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -3.670340965000001,
+            "energy_adjustments": [],
+            "entry_id": "mp-1429856-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1429856-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 3.0,
+                "O": 8.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -15.612014899999991,
+            "energy_adjustments": [],
+            "entry_id": "mp-545796-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-545796-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 6.0,
+                "O": 16.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -31.121981149999982,
+            "energy_adjustments": [],
+            "entry_id": "mp-754874-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-754874-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 3.0,
+                "O": 5.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -13.510770835000002,
+            "energy_adjustments": [],
+            "entry_id": "mp-1096920-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1096920-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 8.0,
+                "O": 30.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -22.305049440000005,
+            "energy_adjustments": [],
+            "entry_id": "mp-1198417-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1198417-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 19.0,
+                "O": 48.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -96.58917459999998,
+            "energy_adjustments": [],
+            "entry_id": "mp-850874-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-850874-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 6.0,
+                "O": 16.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -31.28342575999997,
+            "energy_adjustments": [],
+            "entry_id": "mp-2220540-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-2220540-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 6.0,
+                "O": 16.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -24.02002471999998,
+            "energy_adjustments": [],
+            "entry_id": "mp-1043013-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1043013-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 32.0,
+                "O": 48.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -140.25811813000007,
+            "energy_adjustments": [],
+            "entry_id": "mp-1244912-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1244912-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 32.0,
+                "O": 48.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -145.06427896000002,
+            "energy_adjustments": [],
+            "entry_id": "mp-1245257-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1245257-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 4.0,
+                "O": 6.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -18.52338859000001,
+            "energy_adjustments": [],
+            "entry_id": "mp-1181863-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1181863-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 2.0,
+                "O": 4.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -9.965546140000008,
+            "energy_adjustments": [],
+            "entry_id": "mp-1041961-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1041961-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 1.0,
+                "O": 2.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -4.836680240000003,
+            "energy_adjustments": [],
+            "entry_id": "mp-1421109-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1421109-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 8.0,
+                "O": 21.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": 17.167224274999995,
+            "energy_adjustments": [],
+            "entry_id": "mp-689946-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-689946-GGA+U",
+        "entry_type": "Solid"
+    },
+    {
+        "@class": "PourbaixEntry",
+        "@module": "pymatgen.analysis.pourbaix_diagram",
+        "concentration": 1.0,
+        "entry": {
+            "@class": "ComputedEntry",
+            "@module": "pymatgen.entries.computed_entries",
+            "composition": {
+                "Cr": 8.0,
+                "O": 21.0
+            },
+            "correction": 0.0,
+            "data": {},
+            "energy": -28.211953144999967,
+            "energy_adjustments": [],
+            "entry_id": "mp-1181818-GGA+U",
+            "parameters": {}
+        },
+        "entry_id": "mp-1181818-GGA+U",
+        "entry_type": "Solid"
+    }
+]
