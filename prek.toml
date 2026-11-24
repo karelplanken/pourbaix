@@ -1,4 +1,7 @@
 default_install_hook_types = ["pre-commit", "commit-msg", "pre-push"]
+# Hooks without their own `stages` run on these only. Without this they
+# would also run at commit-msg, so every commit ran the checks twice.
+default_stages = ["pre-commit", "pre-push"]
 
 # Generic file hygiene --------------------------------------------------------
 # Hooks that edit files run on pre-commit only: run again on pre-push, an
@@ -47,6 +50,25 @@ entry = "just format"
 language = "system"
 types = ["python"]
 stages = ["pre-commit"]
+
+# Pre-push twins of ruff-format, which fixes on pre-commit only: the same
+# lint and format checks, without fixing, as a safety net after
+# `git commit --no-verify`.
+[[repos.hooks]]
+id = "check-ruff"
+name = "check-ruff"
+entry = "just check-ruff"
+language = "system"
+types = ["python"]
+stages = ["pre-push"]
+
+[[repos.hooks]]
+id = "check-format"
+name = "check-format"
+entry = "just check-format"
+language = "system"
+types = ["python"]
+stages = ["pre-push"]
 
 # Static type checking via mypy
 [[repos.hooks]]
