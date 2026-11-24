@@ -34,6 +34,8 @@ dev = [
 
 # Build backend -----------------------------------------------------------------------
 [build-system]
+# uv only uses its built-in backend when its own version is in this range,
+# and never raises the bound for you: bump both bounds on a new uv minor.
 requires = ["uv_build>=0.13.9,<0.14"]
 build-backend = "uv_build"
 

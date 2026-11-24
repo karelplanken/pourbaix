@@ -1,5 +1,13 @@
 set dotenv-load := true
 
+# Show which justfile is in use and list its recipes. First recipe, so a
+# bare `just` runs it; the path guards against running a parent project's
+# recipes from a folder without its own justfile.
+[private]
+default:
+    @echo "Using {{ justfile() }}"
+    @just --list
+
 # Python environment ------------------------------------------------------------------
 
 # Install from the lockfile.
