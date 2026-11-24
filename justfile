@@ -27,6 +27,18 @@ install-hooks:
     git rev-parse --is-inside-work-tree >/dev/null 2>&1 || git init
     uv run --frozen prek install
 
+# Template ------------------------------------------------------------------------------
+
+# Show which template version this project was generated from or last updated to.
+template-version:
+    @if [ ! -f .copier-answers.yml ]; then \
+        echo "template version: none (no .copier-answers.yml)"; \
+    else \
+        awk '/^_commit:/ {print "template version: " $2; found = 1} \
+            END {if (!found) print "template version: unknown (no _commit in .copier-answers.yml)"}' \
+            .copier-answers.yml; \
+    fi
+
 # Code quality ------------------------------------------------------------------------
 format *paths=".":
     uv run --frozen ruff check --fix {{ paths }}
