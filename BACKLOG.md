@@ -1,27 +1,33 @@
 # Backlog
 
 Working notes on what comes after the template migration. Started
-2026-10-24. The migration steps themselves are in `HANDOFF.md`.
+2026-10-24.
 
-Suggested order: **A → B → C**. D needs no PR: we only bump pymatgen
-after its next release.
+## Overview
+
+| Step | What | Status | Depends on | Branch / PR |
+|---|---|---|---|---|
+| A | Finish the template migration | ✅ done | | #3 |
+| B | Fix multi-element (composite) diagrams | ⬜ next | | `fix/multi-element-pourbaix` |
+| C | Redesign as a Typer CLI | ⬜ | B | |
+| C2 | Validate the input | ⬜ | C | |
+| D | Bump pymatgen for the `show()` fix | ⏸ waiting for the next pymatgen release | | no PR needed |
+| E | Update or remove `notes/` | ⬜ | | |
+
+✅ done · ⬜ to do · ⏸ waiting. Update the table when a step starts or
+ends. The sections below hold the details.
+
 B and C are a single design job. Do the science fix (B) first, because
 the data model it needs decides what the CLI (C) looks like.
 
 ---
 
-## A. Finish the migration: tests, pathlib, PR
+## A. Finish the migration
 
-Branch: `chore/migrate-to-app-template`. The full plan, its status and
-the test order are in [`HANDOFF.md`](HANDOFF.md). In short:
-
-1. **6d. Tests**, written together. These lock in how the current code
-   behaves, so the later refactors can be shown not to change it.
-2. **6e. pathlib refactor**
-3. **7. PR.** It must mention the `MP_API_KEY` rename as a breaking change.
-
-Keep the composite bug (B) out of this PR. Step 6 promised no behaviour
-change.
+Done in #3, merged on 2026-11-24. That PR adds the tests (7 tests,
+95% coverage of `__main__.py`), the pathlib refactor and the ruff ALL
+fixes. It also lists the behaviour changes, including the `MP_API_KEY`
+rename as a breaking change.
 
 ---
 
@@ -140,6 +146,24 @@ return fig  # the caller decides on plt.show()
 
 ---
 
+## C2. Validate the input (with the CLI work)
+
+Added 2026-11-23, Karel's idea while documenting `plot_pourbaix_diagram`:
+
+- **Check that each element is a real chemical element** before calling
+  the API (e.g. `pymatgen.core.Element.is_valid_symbol`, or catching the
+  `ValueError` from `Element('Fee')`). Today a typo goes straight to the
+  API.
+- **Check that the API returned entries** for the system. An element
+  without Pourbaix data probably gives an empty list or an unclear error
+  from pymatgen. Give a clear message and a non-zero exit code instead,
+  and don't write an empty cache file.
+- **Validate composition and concentration** once they become inputs
+  (see B and C): fractions > 0 that sum to 1, concentrations > 0.
+- Tests: one per check, with a mocked `MPRester` returning `[]`.
+
+---
+
 ## D. `PourbaixPlotter.show()` bug in pymatgen
 
 **Bug** (pymatgen ≤ 2026.10.24):
@@ -191,24 +215,6 @@ To do:
   `get_pourbaix_plot()`, because we need the `Axes` for the font sizes
   and saving. The object-oriented cleanup of our own plotting code is
   under C.
-
----
-
-## C2. Validate the input (with the CLI work)
-
-Added 2026-11-23, Karel's idea while documenting `plot_pourbaix_diagram`:
-
-- **Check that each element is a real chemical element** before calling
-  the API (e.g. `pymatgen.core.Element.is_valid_symbol`, or catching the
-  `ValueError` from `Element('Fee')`). Today a typo goes straight to the
-  API.
-- **Check that the API returned entries** for the system. An element
-  without Pourbaix data probably gives an empty list or an unclear error
-  from pymatgen. Give a clear message and a non-zero exit code instead,
-  and don't write an empty cache file.
-- **Validate composition and concentration** once they become inputs
-  (see B and C): fractions > 0 that sum to 1, concentrations > 0.
-- Tests: one per check, with a mocked `MPRester` returning `[]`.
 
 ---
 
