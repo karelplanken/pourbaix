@@ -8,6 +8,34 @@ Working notes on what comes after the template migration. Started
 | Step | What | Status | Depends on | Branch / PR |
 |---|---|---|---|---|
 | A | Finish the template migration | ✅ done | | #3 |
+| S | Dash spike: interactive Fe diagram, one session | ⬜ next | | throwaway, in `pbx-trial` |
+| B | Fetch the whole chemical system (multi-element fix) | ⬜ | S | `fix/multi-element-pourbaix` |
+| C | Redesign as an interactive app (Dash/Plotly), started from a CLI | ⬜ | S, B | |
+| C2 | Validate the input | ⬜ | C | |
+| D | Bump pymatgen for the `show()` fix | ⏸ waiting for the next pymatgen release | | no PR needed |
+| E | Update or remove `notes/` | ⬜ | | |
+| F | Find out why magnetite (Fe₃O₄) is no longer stable | ⬜ | | |
+
+✅ done · ⬜ to do · ⏸ waiting. Update the table when a step starts or
+ends. The sections below hold the details.
+
+**Direction (2026-11-26):** an interactive app instead of a script that
+saves PNGs. The spike (S) decides whether Dash/Plotly is the right tool
+before B and C are rewritten around it. B and C are still one design
+job, and B (the science) comes first.
+
+**Decision (2026-11-26): no more file cache for entries.** Keep the
+fetched entries in memory, per chemical system, while the app runs.
+`pourbaix-entries/` and the save/load code go during C. The reasons:
+
+- A file cache means owning a file format. Every library change becomes
+  our problem: the emmet `EntryID` in #7 is one example.
+- A file cache silently freezes an old database version. The 2024
+  `Fe.json` still has magnetite, and current MP data doesn't (see F).
+- A fetch takes about 1.5 s, which is fine once per app session.
+
+---|---|---|---|---|
+| A | Finish the template migration | ✅ done | | #3 |
 | B | Fix multi-element (composite) diagrams | ⬜ next | | `fix/multi-element-pourbaix` |
 | C | Redesign as a Typer CLI | ⬜ | B | |
 | C2 | Validate the input | ⬜ | C | |
@@ -28,6 +56,45 @@ Done in #3, merged on 2026-11-24. That PR adds the tests (7 tests,
 95% coverage of `__main__.py`), the pathlib refactor and the ruff ALL
 fixes. It also lists the behaviour changes, including the `MP_API_KEY`
 rename as a breaking change.
+
+---
+
+## S. Dash spike: is an interactive app the right direction?
+
+One session, throwaway code in the scratch project `pbx-trial`, not in
+this repo. The goal is to find out whether Dash/Plotly feels right and
+is fast enough, before B and C are rewritten around it.
+
+**Build:**
+
+- **Fe only.** Fetch the entries once at start-up and keep them in
+  memory.
+- **Build `PourbaixDiagram`, then draw its stable domains as filled
+  Plotly polygons.** Use `PourbaixDiagram.get_pourbaix_domains()` for
+  the vertices, give each species its own colour, and put a label in
+  each domain.
+- **Add the water stability lines:** H₂ at E = −0.0591·pH, and O₂ at
+  E = 1.229 − 0.0591·pH.
+- **On hover, show the species, the pH and E.**
+- **Add one logarithmic concentration slider** (10⁻¹⁰ to 1 M). It
+  recalculates when you release it (`updatemode='mouseup'`), not on
+  every move.
+
+**Measure:**
+
+- How long the diagram takes to recalculate after a slider change, for
+  Fe and, as a stretch goal, for Fe-Ni.
+- Whether the labels stay readable in thin domains, such as FeO(s)
+  along the H₂ line.
+
+**Success:** about 1 s or less for Fe, readable domains, and it's
+fun to use. If it fails, decide whether static Plotly HTML (zoom and
+hover, but no recalculation) is enough, or keep the matplotlib route.
+
+**Out of scope:** tests, the CLI, packaging and polish.
+
+**Tooling:** `plotly` is already installed (pymatgen uses it), and
+`dash` only goes into `pbx-trial`.
 
 ---
 
@@ -57,16 +124,12 @@ rename as a breaking change.
     the same as the ones in a combined fetch? The GGA/GGA+U mixing
     scheme may depend on the chemical system. Compare `Fe.json` against
     the Fe entries from an Fe-Ni fetch.
-- **Cache per chemical system**, not per element: key = sorted elements
-  joined by `-` (`Fe-Ni.json`), the same convention MP uses. The order the
-  user types (`Ni Fe` or `Fe Ni`) must give the same cache file and the
-  same diagram.
-- Decide what to do with the existing per-element files: keep them
-  as-is for single elements (`Fe.json` is already the `Fe` system) and
-  regenerate the PNGs that are wrong.
-- **Make composition and concentration inputs** (see C), and record
-  them in the PNG file name or title, so different diagrams don't
-  overwrite each other.
+- **Key the in-memory entries per chemical system**, not per element.
+  The key is the sorted elements joined by `-` (`Fe-Ni`), the same
+  convention MP uses. The order the user types (`Ni Fe` or `Fe Ni`) must
+  give the same key and the same diagram. There's no file cache anymore
+  (see the decision under Overview).
+- **Make composition and concentration inputs** (see C).
 - Possible extra: `PourbaixDiagram` slows down quickly as elements are
   added (the number of combinations grows fast). Consider capping at 2–3
   elements, or warning above that.
@@ -75,17 +138,37 @@ rename as a breaking change.
 order; the combined fetch is called once with all elements; the cache
 key is the sorted system; the composition fractions sum to 1.
 
-Branch suggestion: `fix/multi-element-pourbaix`. Since it changes the
-cache layout, the commit may need a `!` and a `BREAKING CHANGE` note.
+Branch suggestion: `fix/multi-element-pourbaix`.
 
 ---
 
-## C. Redesign as a CLI app
+## C. Redesign as an interactive app
 
+`pourbaix Fe Ni` (Typer) starts a local Dash server and opens the
+interactive diagram in the browser. The spike (S) decides the details.
 Today the program is configured by editing `compounds` in `main()`.
-The template expects Typer, with `commands/` ready for subcommands.
 
-Sketch, to be discussed:
+### What to do better than MP's Pourbaix app
+
+MP's app (next-gen.materialsproject.org/pourbaix) is also built with
+Dash and Plotly, so the difference has to come from UX choices and
+chemical sense, not from the technology. Compared on 2026-11-26 with Fe:
+
+| MP's app | Do better |
+|---|---|
+| Two colours only: ions pink, solids cyan | A colour per species, or per oxidation state |
+| Tiny labels, lost in thin domains (FeO(s), FeOH⁺, FeO₂²⁻) | Labels with a leader line when a domain is too narrow, and a legend |
+| Concentration as a text field plus an "update" button, limited to 10⁻⁶–5 M | A live logarithmic slider down to 10⁻¹⁰ M (10⁻⁸ M is common in corrosion work) |
+| Hover shows only the name and an mp-id | Hover shows pH, E, the stable species, and perhaps ΔG or the oxidation state |
+| Fixed axes: pH −2 to 16, −4 to 4 V | Adjustable ranges and presets |
+| Box zoom, double-click to reset (standard Plotly) | The same, plus clear reset and export buttons |
+| No database version shown | Show the MP database version with the diagram |
+
+### The earlier CLI sketch
+
+This was written before the redesign. Keep what still fits after the
+spike: there's no `fetch` or `cache` command without a file cache, and
+`--show` becomes "open the app".
 
 ```
 pourbaix plot Fe Ni [--ratio 0.5,0.5] [--conc 1e-6] [--ph 0 14] [--v -3 3]
@@ -111,6 +194,9 @@ Design questions:
   That makes each part testable on its own.
 
 ### Make `plot_pourbaix_diagram` fully object-oriented
+
+*Only relevant if a static matplotlib export stays. With Plotly, this
+function is replaced.*
 
 Today it mixes two matplotlib styles. It calls `ax.set_xlabel` on an
 explicit `Axes`, but `plt.xticks`, `plt.yticks`, `plt.tight_layout`
@@ -222,3 +308,28 @@ To do:
 
 - **The files in `notes/` are out of date** (added 2026-11-21).
   Update them, merge them into the README, or remove them.
+
+---
+
+## F. Why is magnetite (Fe₃O₄) no longer stable?
+
+Found 2026-11-26, in #7. With current Materials Project data, Fe₃O₄ is
+not a stable domain in the Fe diagram. With the 2024 `Fe.json`, it is.
+**MP's own app agrees with the current data:** at 10⁻⁶ M it shows
+Fe(s), Fe₂O₃(s) and FeO(s), plus ions, and no Fe₃O₄. So it's the
+database, not our code.
+
+- 10 shared solids changed energy, by up to +1.6 eV. Most are Fe₃O₄
+  polymorphs.
+- Magnetite usually appears in an Fe Pourbaix diagram, so this could
+  be a regression, or a deliberate change: a new calculation, the
+  correction scheme (GGA/GGA+U/r2SCAN mixing), or the ion reference
+  data.
+
+To do:
+
+- Record the database version (`MPRester().get_database_version()`).
+- Check MP's release notes for changes to Fe oxides or the corrections.
+- Compare with an experimental Fe Pourbaix diagram from the literature.
+- If it still looks wrong, ask on the MP forum (matsci.org), with the
+  evidence above.
