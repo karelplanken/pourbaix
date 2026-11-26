@@ -125,7 +125,11 @@ def save_pourbaix_entries(compound: str, entries: list[PourbaixEntry]) -> None:
 
     # Save list of Pourbaix entries to disk
     _entries_path(compound).write_text(
-        json.dumps(entries_dct, indent=4, sort_keys=True, ensure_ascii=False) + '\n',
+        # Fresh API data has emmet EntryID objects; store them as 'mp-123-GGA' strings
+        json.dumps(
+            entries_dct, default=str, indent=4, sort_keys=True, ensure_ascii=False
+        )
+        + '\n',
         encoding='utf-8',
     )
 
