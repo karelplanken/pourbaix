@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING, NotRequired, TypedDict, cast
 from unittest.mock import Mock, create_autospec, sentinel
 
 import pytest
+from emmet.core.types.pymatgen_types.computed_entries_adapter import EntryID
 from mp_api.client import MPRester
 from pre_commit_hooks.pretty_format_json import main as pretty_format_json
 
@@ -186,3 +187,18 @@ def test_main_plots_iron_diagram(monkeypatch: pytest.MonkeyPatch) -> None:
     to_disk.assert_called_once_with(['Fe'])
     get_stored.assert_called_once_with('Fe')
     plot.assert_called_once_with(['Fe'], [sentinel.fe_entry], {'Fe': 1.0}, {'Fe': 1e-8})
+
+
+def test_entry_ids_are_saved_as_strings(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path, fe_entries: list[PourbaixEntry]
+) -> None:
+    """Emmet EntryID objects from fresh API data are cached as plain strings."""
+    solid = next(e for e in fe_entries if e.phase_type == 'Solid')
+    solid.entry.entry_id = EntryID.model_validate('mp-13-GGA')  # type: ignore[assignment]
+    monkeypatch.setattr('pourbaix.__main__.JSON_ENTRIES_DIR', tmp_path)
+
+    save_pourbaix_entries('Fe', fe_entries)
+    loaded = get_stored_pourbaix_entries('Fe')
+
+    loaded_solid = next(e for e in loaded if e.phase_type == 'Solid')
+    assert loaded_solid.entry.entry_id == 'mp-13-GGA'
